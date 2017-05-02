@@ -1,6 +1,18 @@
 import json
 import logging
-from socket import inet_pton, AF_INET6, error
+import platform
+
+try:
+    from socket import inet_pton
+except ImportError, e:
+    if e.message == 'cannot import name inet_pton' and platform.system() == 'Windows':
+        try:
+            import win_inet_pton as inet_pton
+        except Exception, e1:
+            raise e1
+
+from socket import AF_INET6, error
+
 from hashlib import md5
 
 from django.contrib.auth import get_user_model
