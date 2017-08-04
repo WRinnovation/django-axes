@@ -8,7 +8,7 @@ except ImportError as e:
     if e.message == 'cannot import name inet_pton' and platform.system() == 'Windows':
         try:
             import win_inet_pton as inet_pton
-        except Exception, e1:
+        except Exception as e1:
             raise e1
 
 from socket import AF_INET6, error
