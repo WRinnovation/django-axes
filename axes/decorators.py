@@ -4,7 +4,7 @@ import platform
 
 try:
     from socket import inet_pton
-except ImportError, e:
+except ImportError as e:
     if e.message == 'cannot import name inet_pton' and platform.system() == 'Windows':
         try:
             import win_inet_pton as inet_pton
